@@ -1,4 +1,3 @@
-const path = require('path');
 const fs = require('fs');
 const express = require('express');
 const {default: axios} = require('axios');
@@ -6,7 +5,6 @@ const mailClient = require("./mailSender");
 
 const router = express.Router();
 
-const NOMICS_KEY = '9bcaa07517e2cf5c42c7cba4fcf14f301527eac6';
 const EMAILS_FILE_PATH = './emails.dat';
 
 appendToFile = email => fs.appendFileSync(EMAILS_FILE_PATH, email + '\n', 'utf-8');
@@ -23,7 +21,7 @@ router.get('/rate', async (req, res, next) => {
         res.status(200).json(rate);
     } catch (e) {
         console.log(e);
-        res.status(400).send('Invalid status value');
+        res.status(400).send('Invalid status value.');
     }
 });
 
